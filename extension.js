@@ -26,6 +26,10 @@
  * 
  * documentation
  * https://docs.gtk.org/glib/func.spawn_command_line_async.html
+ * 
+ * INSTALLATION:
+ * 
+ * git clone https://github.com/addisaden/gnome-screenshot-directory-switcher.git ~/.local/share/gnome-shell/extensions/gnome-screenshot-directory-switcher
  */
 
 /* exported init */
