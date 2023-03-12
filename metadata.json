@@ -1,0 +1,8 @@
+{
+  "name": "Gnome-Screenshot Directory Switcher",
+  "description": "Easy change the path of the default directory for gnome-screenshot",
+  "uuid": "gnome-screenshot-directory-switcher",
+  "shell-version": [
+    "43"
+  ]
+}
