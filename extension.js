@@ -56,6 +56,13 @@ class Indicator extends PanelMenu.Button {
         let workdir = userhome + "/Bilder/Bildschirmfotos/work";
         let homedir = userhome + "/Bilder/Bildschirmfotos/home";
 
+        // add a toggle item named "Fullscreen"
+        let item_toggle_fullscreen = new PopupMenu.PopupSwitchMenuItem(_('Fullscreen'), true);
+        item_toggle_fullscreen.connect('toggled', (item) => {
+            this.make_fullscreen = item.state;
+        });
+        this.menu.addMenuItem(item_toggle_fullscreen);
+
         let item_work = new PopupMenu.PopupMenuItem(_('Work'));
         let item_home = new PopupMenu.PopupMenuItem(_('Home'));
 
@@ -87,7 +94,11 @@ class Indicator extends PanelMenu.Button {
         
         let curd = new Date();
         let curdstr = curd.getFullYear() + "-" + (curd.getMonth()+1) + "-" + curd.getDate() + "_" + curd.getHours() + "-" + curd.getMinutes() + "-" + curd.getSeconds();
-        let command = "gnome-screenshot -a -f \"" + dirpath + "/screenshot_" + curdstr + ".png\"";
+        let screenshot_prefix = "gnome-screenshot -a ";
+        if (this.make_fullscreen == true) {
+            screenshot_prefix = "gnome-screenshot ";
+        }
+        let command = screenshot_prefix + "-f \"" + dirpath + "/screenshot_" + curdstr + ".png\"";
         GLib.spawn_command_line_async(command);
     }
 });
